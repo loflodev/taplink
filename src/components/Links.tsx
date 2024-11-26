@@ -2,7 +2,7 @@ import { EllipsisVertical } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useAnalytics from "../hooks/useAnalytics";
-import { getEnvironment, getIpAddress, saveEvent } from "../services/eventService";
+import { getEnvironment, getIpAddress } from "../services/eventService";
 import { v4 as uuidv4 } from "uuid";
 
 interface LinksProps {
@@ -17,21 +17,6 @@ const Links: React.FC<LinksProps> = ({ t }) => {
 
   const toggleAbout = () => {
     setIsAboutExpanded(!isAboutExpanded);
-  };
-
-  const savingEvent = async (eventName: string) => {
-    try {
-      const eventId = await saveEvent({
-        title: eventName,
-        timestamp: new Date(),
-        ipAddress: await getIpAddress(),
-        userId: uuidv4(),
-        environment: getEnvironment(),
-      });
-      console.log("Event saved with ID:", eventId);
-    } catch (error) {
-      console.error("Failed to save event:", error);
-    }
   };
 
   useEffect(() => {
@@ -64,8 +49,7 @@ const Links: React.FC<LinksProps> = ({ t }) => {
                 <button
                   onClick={() => {
                     toggleAbout();
-                    logNewEvent(value);
-                    savingEvent(value);
+                    logNewEvent("link_click", { link_type: "about", link_name: value });
                   }}
                   className="w-full p-4 text-center flex items-center justify-center hover:bg-gray-700 transition-colors"
                   aria-expanded={isAboutExpanded}
@@ -86,8 +70,7 @@ const Links: React.FC<LinksProps> = ({ t }) => {
               key={key}
               href={`#${key}`}
               onClick={() => {
-                logNewEvent(value);
-                savingEvent(value);
+                logNewEvent("link_click", { link_type: key, link_name: value });
               }}
               className="block w-full p-4 text-center bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
             >

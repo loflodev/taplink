@@ -1,9 +1,9 @@
 export const firebaseConfig = {
-  apiKey: "AIzaSyCHyrG5qV1RTCjsUUwTd1MSpz5oY6AoFDo",
-  authDomain: "loflodev-taplink.firebaseapp.com",
-  projectId: "loflodev-taplink",
-  storageBucket: "loflodev-taplink.firebasestorage.app",
-  messagingSenderId: "768952919054",
-  appId: "1:768952919054:web:9ebdce805bc024a369085f",
-  measurementId: "G-DRV8S38W6M",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };

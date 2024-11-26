@@ -7,7 +7,6 @@ import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import CTAButton from "./components/CTAButton";
 import useAnalytics from "./hooks/useAnalytics";
-import { saveEvent, getIpAddress, getEnvironment } from "./services/eventService";
 import { v4 as uuidv4 } from "uuid";
 
 initI18n();
@@ -22,25 +21,9 @@ export default function App() {
     setIsMobile(window.innerWidth <= 768);
   }, []);
 
-  const savingEvent = async () => {
-    try {
-      const eventId = await saveEvent({
-        title: "Home",
-        timestamp: new Date(),
-        ipAddress: await getIpAddress(),
-        userId: uuidv4(),
-        environment: getEnvironment(),
-      });
-      console.log("Event saved with ID:", eventId);
-    } catch (error) {
-      console.error("Failed to save event:", error);
-    }
-  };
-
   useEffect(() => {
     checkMobile();
-    logNewEvent("Home");
-    savingEvent();
+    logNewEvent("page_view", { page: "home" });
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, [checkMobile, logNewEvent]);

@@ -8,8 +8,8 @@ const useAnalytics = () => {
   const analytics = getAnalytics(firebaseApp);
 
   const logNewEvent = useCallback(
-    (eventName: string) => {
-      return logEvent(analytics, eventName);
+    (eventName: string, params?: Record<string, any>) => {
+      return logEvent(analytics, eventName, params);
     },
     [analytics]
   );
