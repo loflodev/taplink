@@ -1,0 +1,15 @@
+{
+  "title": "Welcome to My Profile",
+  "description": "Sotfware Developer & Tech Enthusiast",
+  "aboutDescription": "Hi there! I'm Louis, a web developer with more than 5 years of experience. I love creating web solutions that make a difference. Get in touch to talk about your project.",
+  "bookConsultation": "Book Free Consultation",
+  "developedBy": "Developed by ",
+  "mobileOnly": "This page is only available on mobile devices",
+  "links": {
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "services": "Services",
+    "about": "About Me",
+    "contact": "Contact"
+  }
+}

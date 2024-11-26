@@ -1,0 +1,55 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Basic validation functions
+    function isValidString(field) {
+      return field is string 
+        && field.size() > 0 
+        && field.size() <= 500;
+    }
+
+    function isValidTimestamp(time) {
+      return time is timestamp;
+    }
+
+    function isValidIpAddress(ip) {
+      return ip is string 
+        && (ip.matches('^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$') || ip == 'unknown')
+        && ip.size() <= 45;
+    }
+
+    function isValidEnvironment(env) {
+      return env is string && (env == 'production' || env == 'development');
+    }
+
+    // Rules for events collection
+    match /events/{eventId} {
+      allow read: if false;
+      
+      allow create: if
+        // Required fields check
+        request.resource.data.keys().hasAll(['title', 'timestamp', 'userId', 'ipAddress', 'environment']) &&
+        
+        // Field validations
+        isValidString(request.resource.data.title) &&
+        isValidTimestamp(request.resource.data.timestamp) &&
+        isValidString(request.resource.data.userId) &&
+        isValidIpAddress(request.resource.data.ipAddress) &&
+        isValidEnvironment(request.resource.data.environment) &&
+        
+        // Optional field validation
+        (!request.resource.data.keys().hasAny(['description']) || 
+          isValidString(request.resource.data.description)) &&
+        
+        // UUID format validation
+        request.resource.data.userId.matches('^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$');
+
+      allow update, delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

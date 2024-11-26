@@ -1,0 +1,15 @@
+{
+  "title": "Bienvenue sur Mon Profil",
+  "description": "Développeur de Logiciels et Passionné de Technologie",
+  "aboutDescription": "Bonjour! Je suis Louis, un développeur web avec plus de 5 ans d'expérience. J'adore créer des solutions web qui font la différence. Contactez-moi pour discuter de votre projet.",
+  "bookConsultation": "Réserver une Consultation Gratuite",
+  "developedBy": "Développé par ",
+  "mobileOnly": "Cette page est uniquement disponible sur mobile",
+  "links": {
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "services": "Services",
+    "about": "À Propos",
+    "contact": "Contact"
+  }
+}
