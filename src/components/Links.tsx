@@ -2,8 +2,6 @@ import { EllipsisVertical } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useAnalytics from "../hooks/useAnalytics";
-import { getEnvironment, getIpAddress } from "../services/eventService";
-import { v4 as uuidv4 } from "uuid";
 
 interface LinksProps {
   t: ReturnType<typeof useTranslation>["t"];
