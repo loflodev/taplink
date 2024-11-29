@@ -7,7 +7,6 @@ import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import CTAButton from "./components/CTAButton";
 import useAnalytics from "./hooks/useAnalytics";
-import { v4 as uuidv4 } from "uuid";
 
 initI18n();
 
