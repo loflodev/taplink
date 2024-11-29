@@ -7,7 +7,11 @@ import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import CTAButton from "./components/CTAButton";
 import useAnalytics from "./hooks/useAnalytics";
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from "./firebaseconfig";
 
+// Initialize Firebase at app level
+initializeApp(firebaseConfig);
 initI18n();
 
 export default function App() {
@@ -22,9 +26,14 @@ export default function App() {
 
   useEffect(() => {
     checkMobile();
+    // Log page view with a small delay to ensure Firebase is ready
+
     logNewEvent("page_view", { page: "home" });
+
     window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
   }, [checkMobile, logNewEvent]);
 
   if (!isMobile) {

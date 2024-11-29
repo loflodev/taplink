@@ -47,7 +47,10 @@ const Links: React.FC<LinksProps> = ({ t }) => {
                 <button
                   onClick={() => {
                     toggleAbout();
-                    logNewEvent("link_click", { link_type: "about", link_name: value });
+                    logNewEvent("link_click", {
+                      link_type: "about",
+                      link_name: value,
+                    });
                   }}
                   className="w-full p-4 text-center flex items-center justify-center hover:bg-gray-700 transition-colors"
                   aria-expanded={isAboutExpanded}
