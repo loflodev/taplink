@@ -1,5 +1,7 @@
 import { Github, Linkedin, Instagram, Facebook } from "lucide-react";
 import XIcon from "../assets/svg/XIcon";
+import { LINK_DEFINITIONS } from "../constants";
+
 
 interface ProfileProps {
   title: string;
@@ -21,35 +23,35 @@ const Profile: React.FC<ProfileProps> = ({ title, description }) => {
 
       <div className="flex justify-center gap-4 mb-12">
         <a
-          href="#"
+          href={LINK_DEFINITIONS.twitter.link}
           className="hover:text-blue-400 transition-colors"
           aria-label="Twitter"
         >
           <XIcon />
         </a>
         <a
-          href="#"
+          href={LINK_DEFINITIONS.github.link}
           className="hover:text-blue-400 transition-colors"
           aria-label="GitHub"
         >
           <Github className="w-6 h-6" />
         </a>
         <a
-          href="#"
+          href={LINK_DEFINITIONS.linkedin.link}
           className="hover:text-blue-400 transition-colors"
           aria-label="LinkedIn"
         >
           <Linkedin className="w-6 h-6" />
         </a>
         <a
-          href="#"
+          href={LINK_DEFINITIONS.instagram.link}
           className="hover:text-blue-400 transition-colors"
           aria-label="Instagram"
         >
           <Instagram className="w-6 h-6" />
         </a>
         <a
-          href="#"
+          href={LINK_DEFINITIONS.facebook.link}
           className="hover:text-blue-400 transition-colors"
           aria-label="Facebook"
         >
