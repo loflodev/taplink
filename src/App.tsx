@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { Rabbit } from "lucide-react";
 import { initI18n } from "./hooks/use-i18n";
 import Links from "./components/Links";
-import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import CTAButton from "./components/CTAButton";
 import useAnalytics from "./hooks/useAnalytics";
@@ -26,7 +25,6 @@ export default function App() {
 
   useEffect(() => {
     checkMobile();
-    // Log page view with a small delay to ensure Firebase is ready
 
     logNewEvent("page_view", { page: "home" });
 
@@ -48,10 +46,9 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white pb-20">
+    <div className="h-[92vh] overflow-scroll bg-gradient-to-b from-gray-900 to-gray-800 text-white pb-20">
       <Profile title={t("title")} description={t("description")} />
       <Links t={t} />
-      <Footer text={t("developedBy")} author={"Louis Jr. Florival"} />
       <CTAButton text={t("bookConsultation")} />
     </div>
   );

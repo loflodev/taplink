@@ -6,10 +6,8 @@
   "developedBy": "Développé par ",
   "mobileOnly": "Cette page est uniquement disponible sur mobile",
   "links": {
-    "portfolio": "Portfolio",
-    "blog": "Blog",
-    "services": "Services",
     "about": "À Propos",
-    "contact": "Contact"
+    "portfolio": "Portfolio",
+    "blog": "Blog"
   }
 }

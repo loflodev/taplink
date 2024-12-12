@@ -1,4 +1,5 @@
-import { Twitter, Github, Linkedin, Instagram, Facebook } from "lucide-react";
+import { Github, Linkedin, Instagram, Facebook } from "lucide-react";
+import XIcon from "../assets/svg/XIcon";
 
 interface ProfileProps {
   title: string;
@@ -24,7 +25,8 @@ const Profile: React.FC<ProfileProps> = ({ title, description }) => {
           className="hover:text-blue-400 transition-colors"
           aria-label="Twitter"
         >
-          <Twitter className="w-6 h-6" />
+        
+          <XIcon />
         </a>
         <a
           href="#"

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { EllipsisVertical } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import useAnalytics from "../hooks/useAnalytics";
+import { LINK_DEFINITIONS } from "../constants";
 
 interface LinksProps {
   t: ReturnType<typeof useTranslation>["t"];
@@ -37,12 +38,13 @@ const Links: React.FC<LinksProps> = ({ t }) => {
     <section className="px-6">
       <div className="space-y-4">
         {Object.entries(links).map(([key, value]) => {
+          const linkDef = LINK_DEFINITIONS[key];
           if (key === "about") {
             return (
               <div
                 key={key}
                 ref={aboutRef}
-                className="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden"
+                className="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden relative"
               >
                 <button
                   onClick={() => {
@@ -56,7 +58,7 @@ const Links: React.FC<LinksProps> = ({ t }) => {
                   aria-expanded={isAboutExpanded}
                 >
                   <span className="flex-grow">{value}</span>
-                  <EllipsisVertical />
+                  <EllipsisVertical className="absolute right-4" />
                 </button>
                 {isAboutExpanded && (
                   <div className="p-4 bg-gray-700 text-sm">
@@ -69,7 +71,7 @@ const Links: React.FC<LinksProps> = ({ t }) => {
           return (
             <a
               key={key}
-              href={`#${key}`}
+              href={linkDef.link}
               onClick={() => {
                 logNewEvent("link_click", { link_type: key, link_name: value });
               }}

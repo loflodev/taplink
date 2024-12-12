@@ -5,7 +5,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ text, author }) => {
   return (
-    <footer className="text-center mt-12 text-sm text-gray-400">
+    <footer className="text-center mt-2 text-xs text-gray-400">
       <p>
         {text}{" "}
         <span>
