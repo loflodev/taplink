@@ -17,6 +17,7 @@ const CTAButton: React.FC<CTAButtonProps> = ({ text }) => {
             button_name: "book_consultation",
             button_text: text,
           });
+          window.location.href = "https://calendly.com/djljmix/30min";
         }}
         className="w-full bg-blue-500 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-600"
       >

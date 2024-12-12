@@ -25,7 +25,6 @@ const Profile: React.FC<ProfileProps> = ({ title, description }) => {
           className="hover:text-blue-400 transition-colors"
           aria-label="Twitter"
         >
-        
           <XIcon />
         </a>
         <a

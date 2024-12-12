@@ -12,12 +12,12 @@ export const LINK_DEFINITIONS: Record<string, LinkDefinition> = {
   },
   portfolio: {
     name: "portfolio",
-    link: "https://www.louisjrflorival.com/",
+    link: "#portfolio",
     alt: "portfolio",
   },
   blog: {
     name: "blog",
-    link: "https://linkedin.com/in/yourusername",
+    link: "#blog",
     alt: "blog Profile",
   },
   twitter: {

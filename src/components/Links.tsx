@@ -3,6 +3,7 @@ import { EllipsisVertical } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import useAnalytics from "../hooks/useAnalytics";
 import { LINK_DEFINITIONS } from "../constants";
+import Popup from "./Popup";
 
 interface LinksProps {
   t: ReturnType<typeof useTranslation>["t"];
@@ -13,6 +14,16 @@ const Links: React.FC<LinksProps> = ({ t }) => {
   const [isAboutExpanded, setIsAboutExpanded] = useState(false);
   const aboutRef = useRef<HTMLDivElement>(null);
   const links = t("links", { returnObjects: true }) as Record<string, string>;
+
+  const [isPopupVisible, setPopupVisible] = useState(false);
+
+  const handlePortfolioClick = () => {
+    setPopupVisible(true);
+  };
+
+  const closePopup = () => {
+    setPopupVisible(false);
+  };
 
   const toggleAbout = () => {
     setIsAboutExpanded(!isAboutExpanded);
@@ -74,6 +85,9 @@ const Links: React.FC<LinksProps> = ({ t }) => {
               href={linkDef.link}
               onClick={() => {
                 logNewEvent("link_click", { link_type: key, link_name: value });
+                if (key === "portfolio") {
+                  handlePortfolioClick();
+                }
               }}
               className="block w-full p-4 text-center bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
             >
@@ -82,6 +96,12 @@ const Links: React.FC<LinksProps> = ({ t }) => {
           );
         })}
       </div>
+      {isPopupVisible && (
+        <Popup
+          message="Bear with me, my Portfolio is under construction"
+          onClose={closePopup}
+        />
+      )}
     </section>
   );
 };
