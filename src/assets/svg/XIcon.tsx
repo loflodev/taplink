@@ -2,15 +2,17 @@ interface Props {
   width?: number;
   height?: number;
   color?: string;
+  className?: string;
 }
 
-const XIcon = ({ width, height, color }: Props) => {
+const XIcon = ({ width, height, color, className }: Props) => {
   return (
     <svg
       width={width ? width : 20}
       height={height ? height : 24}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       <title>X</title>
       <path

@@ -24,10 +24,10 @@ const Profile: React.FC<ProfileProps> = ({ title, description }) => {
       <div className="flex justify-center gap-4 mb-12">
         <a
           href={LINK_DEFINITIONS.twitter.link}
-          className="hover:text-blue-400 transition-colors"
+          className="group hover:text-blue-400 transition-colors"
           aria-label="Twitter"
         >
-          <XIcon />
+          <XIcon className="fill-current group-hover:text-blue-400" />
         </a>
         <a
           href={LINK_DEFINITIONS.github.link}
